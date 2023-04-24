@@ -2,8 +2,14 @@
 
 ## What is this ?
 
+forked from:
++ <https://github.com/didfet/logstash-forwarder-java> and
++ <https://github.com/netfirms/logstash-forwarder-java>
+
 Logstash-forwarder-java is a log shipper program written in java. This is in fact a java version of [logstash-forwarder](https://github.com/elasticsearch/logstash-forwarder) by jordansissel.
+
 Here are a few features of this program :
+
   - compatible with AIX IBM Java 8 runtime (other *nix systems better use beat)
   - lightweight : package size is ~2MB and memory footprint ~8MB
   - configuration compatible with logstash-forwarder
@@ -19,12 +25,9 @@ So logstash-forwarder-java is a solution for those who want a portable, lightwei
 
 ## How to install it ?
 
-Download one of the following archives :
-  - [logstash-forwarder-java-0.2.6-bin.zip](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.zip)
-  - [logstash-forwarder-java-0.2.6-bin.tar.gz](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.tar.gz)
-  - [logstash-forwarder-java-0.2.6-bin.tar.bz2](https://github.com/netfirms/logstash-forwarder-java/releases/download/0.2.6/logstash-forwarder-java-0.2.6-bin.tar.bz2)
+Download the maven project and run maven package. Then you can install one of the archives located in the target directory.
 
-Or download the maven project and run maven package. Then you can install one of the archives located in the target directory.
+		mvn clean package
 
 ## Generate SSL Certificates (Logstash side) 
 
@@ -49,9 +52,10 @@ Now generate the SSL certificate and private key in the appropriate locations (/
     
 
 ## Configure Logstash
+
 Logstash configuration files are in the JSON-format, and reside in /etc/logstash/conf.d. The configuration consists of three sections: inputs, filters, and outputs.
 
-Let's create a configuration file called 02-beats-input.conf and set up our "filebeat" input:
+Let's create a configuration file called `02-beats-input.conf` and set up our "filebeat" input:
 
 
     sudo vi /etc/logstash/conf.d/02-beats-input.conf
@@ -83,6 +87,7 @@ Restart and enable Logstash to put our configuration changes into effect:
     sudo chkconfig logstash on
 
 ## Create keystore for client side
+
 If you have your CA certificate stored in a .pem (.crt with x509) text file, run the following command to create the keystore.jks file (don't worry about it password) :
 
     keytool -importcert -trustcacerts -file cacert.pem -alias ca -keystore keystore.jks
@@ -93,6 +98,7 @@ To list the contents of the keystore file, run this command (with your password)
 
 ## Example configuration file (config.json)
 
+```json
     {
       "network": {
         "servers": [ "logstash_server:5044" ],
@@ -127,7 +133,8 @@ To list the contents of the keystore file, run this command (with your password)
         }
       ]
     } 
-    
+```
+
 ## How to run it ?
 
 Just run this command :
