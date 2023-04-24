@@ -4,9 +4,9 @@
   <groupId>logstash-forwarder-java</groupId>
   <artifactId>logstash-forwarder-java</artifactId>
   <name>logstash-forwarder-java</name>
-  <version>0.2.6</version>
+  <version>0.2.7</version>
   <description>Java version of logstash forwarder</description>
-  <url>https://github.com/didfet/logstash-forwarder-java</url>
+  <url>https://github.com/misamura/logstash-forwarder-java</url>
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
@@ -16,9 +16,9 @@
     </license>
   </licenses>
   <scm>
-    <connection>scm:git:https://github.com/didfet/logstash-forwarder-java</connection>
-    <developerConnection>scm:git:https://github.com/didfet/logstash-forwarder-java</developerConnection>
-    <url>https://github.com/didfet/logstash-forwarder-java</url>
+    <connection>scm:git:https://github.com/misamura/logstash-forwarder-java</connection>
+    <developerConnection>scm:git:https://github.com/misamura/logstash-forwarder-java</developerConnection>
+    <url>https://github.com/misamura/logstash-forwarder-java</url>
   </scm>
   <build>
     <finalName>${project.artifactId}-${project.version}</finalName>
@@ -52,15 +52,24 @@
     </pluginManagement>
     <plugins>
       <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <compilerArgument>-Xlint:unchecked</compilerArgument>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.18.1</version>
+        <version>3.0.0-M5</version>
         <configuration>
           <forkCount>0</forkCount>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.3.0</version>
         <configuration>
           <archive>
             <manifest>
@@ -92,7 +101,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.5.3</version>
+        <version>2.6</version>
         <executions>
           <execution>
             <id>create-archive</id>
@@ -112,7 +121,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>

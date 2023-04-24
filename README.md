@@ -139,11 +139,11 @@ To list the contents of the keystore file, run this command (with your password)
 
 Just run this command :
 
-    java -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json
+    java -Dlog4j1.compatibility=true -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json
 
 For debug mode run :
 
-    java -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json -debug
+    java -Dlog4j1.compatibility=true -jar logstash-forwarder-java-X.Y.Z.jar -config /path/to/config/file.json -debug
 
 For help run :
 
